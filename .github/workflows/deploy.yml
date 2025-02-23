@@ -3,7 +3,7 @@ name: Deploy Portfolio to GitHub Pages
 on:
   push:
     branches:
-      - main  # Change this if your branch is different
+      - main  # Ensure this matches your default branch name
 
 permissions:
   contents: read
@@ -23,13 +23,8 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-artifact@v4
         with:
-          name: github-pages  # Make sure this matches deploy step
-          path: |
-            index.html
-            assets/  # Include your CSS, JS, and image folders if applicable
-            styles.css  # Add any additional files
+          name: github-pages
+          path: index.html  # Only include files that exist
 
       - name: Deploy to GitHub Pages
         uses: actions/deploy-pages@v2
-        with:
-          artifact_name: github-pages  # Ensure this matches the uploaded artifact
