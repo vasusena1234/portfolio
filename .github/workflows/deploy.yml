@@ -3,7 +3,7 @@ name: Deploy Portfolio to GitHub Pages
 on:
   push:
     branches:
-      - main
+      - main  # Change to your default branch if different
 
 permissions:
   contents: read
@@ -24,7 +24,8 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: github-pages
-          path: .  # Ensure your index.html is in the root folder
+          path: .  # Ensure index.html is in this path
 
       - name: Deploy to GitHub Pages
+        id: deployment
         uses: actions/deploy-pages@v2
